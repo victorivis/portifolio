@@ -47,11 +47,45 @@
             color: #444;
         }
 
+        .images {
+            position: relative;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
         .images img {
+            display: none;
             max-width: 100%;
             height: auto;
             margin-top: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .images img.active {
+            display: block;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
         }
 
         .github-link a {
@@ -67,27 +101,33 @@
 </head>
 <body>
     <div class="portfolio-container">
-        <div class="project-title">Nome do Projeto 1</div>
+        <div class="project-title">Game Engine</div>
 
         <div class="section">
             <div class="section-title">Equipe</div>
             <div class="team">
-                <p>Nome 1, Nome 2, Nome 3</p>
+                <p>Victor Ivis</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Descrição</div>
             <div class="description">
-                <p>Descreva aqui o que a aplicação faz, quais problemas resolve, principais funcionalidades e tecnologias utilizadas.</p>
+                <p>Uma game engine simples em C++ feita com SDL2. O mapa é carregado usando um arquivo xml 
+                    que guarda as posições no formato csv. As colisões são lidadas pelo algorítmo AABB e 
+                    existe a implementação da física para gravidade, atrito, movimentação na diagonal usando
+                    seno e cosseno e outros funcionalidades que estão em desenvolvimento. Existe uma versão compilada
+                    tanto para windows quanto para linux nas aba de tags.</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Imagens do Aplicativo</div>
             <div class="images">
-                <img src="imagem1.jpg" alt="Imagem do aplicativo 1">
-                <img src="imagem2.jpg" alt="Imagem do aplicativo 2">
+                <img src="img/gameEngine1.jpeg" alt="Imagem do aplicativo 1" class="active">
+                <img src="img/gameEngine2.png" alt="Imagem do aplicativo 2">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
             </div>
         </div>
 
@@ -98,7 +138,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="portfolio-container">
         <div class="project-title">Nome do Projeto 2</div>
 
@@ -119,8 +159,10 @@
         <div class="section">
             <div class="section-title">Imagens do Aplicativo</div>
             <div class="images">
-                <img src="imagem3.jpg" alt="Imagem do aplicativo 3">
-                <img src="imagem4.jpg" alt="Imagem do aplicativo 4">
+                <img src="img/financas1.png" alt="Imagem do aplicativo 3" class="active">
+                <img src="img/financas2.png" alt="Imagem do aplicativo 4">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
             </div>
         </div>
 
@@ -152,8 +194,10 @@
         <div class="section">
             <div class="section-title">Imagens do Aplicativo</div>
             <div class="images">
-                <img src="imagem3.jpg" alt="Imagem do aplicativo 3">
+                <img src="imagem3.jpg" alt="Imagem do aplicativo 3" class="active">
                 <img src="imagem4.jpg" alt="Imagem do aplicativo 4">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
             </div>
         </div>
 
@@ -163,6 +207,22 @@
                 <a href="https://github.com/usuario/projeto2" target="_blank">Veja no GitHub</a>
             </div>
         </div>
-    </div>    
+    </div>
+
+    <script>
+        function changeImage(direction, event) {
+            const pai = event.target.parentNode;
+            console.log(pai);
+            const images = pai.querySelectorAll('.images img');
+            let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            images[activeIndex].classList.remove('active');
+            
+            let newIndex = activeIndex + direction;
+            if (newIndex < 0) newIndex = images.length - 1;
+            if (newIndex >= images.length) newIndex = 0;
+
+            images[newIndex].classList.add('active');
+        }
+    </script>
 </body>
 </html>
