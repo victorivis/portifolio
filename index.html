@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Projetos</title>
+    <script src="changeImage.js" defer></script>
+    <script src="zoomImage.js" defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,6 +17,7 @@
         }
 
         .portfolio-container {
+            border-radius: 20px;
             width: 80%;
             max-width: 800px;
             margin: 20px;
@@ -53,6 +56,21 @@
             display: flex;
             justify-content: center;
             overflow: hidden;
+        }
+
+        .images::after {            
+            margin-top: 10px;
+            display: var(--visibility, none);
+            content: "";
+            background-image: var(--url);
+            background-size: 320%;
+            background-position: var(--posX, 0) var(--posY, 0);
+            width:  100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
         }
 
         .images img {
@@ -312,21 +330,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function changeImage(direction, event) {
-            const pai = event.target.parentNode;
-            console.log(pai);
-            const images = pai.querySelectorAll('.images img');
-            let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
-            images[activeIndex].classList.remove('active');
-            
-            let newIndex = activeIndex + direction;
-            if (newIndex < 0) newIndex = images.length - 1;
-            if (newIndex >= images.length) newIndex = 0;
-
-            images[newIndex].classList.add('active');
-        }
-    </script>
 </body>
 </html>
