@@ -1,8 +1,7 @@
 function changeImage(direction, event) {
     event.stopPropagation();
-    
+
     const pai = event.target.parentNode;
-    //console.log(pai);
     const images = pai.querySelectorAll('.images img');
     let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
     images[activeIndex].classList.remove('active');
