@@ -6,11 +6,14 @@
     <title>Portfólio - Projetos</title>
     <script src="changeImage.js" defer></script>
     <script src="zoomImage.js" defer></script>
+    <script src="chessController.js" defer></script>
+    <script src="web-assembler/chess.js" defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             background-color: #f9f9f9;
             margin: 0;
             flex-wrap: wrap;
@@ -115,9 +118,52 @@
         .github-link a:hover {
             text-decoration: underline;
         }
+
+        /* estilizacao do xadrez */
+
+        #chess{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #controls{
+            padding: 10px;
+            border: 1px black solid;
+        }
+        
+        strong{
+            font-family: Consolas, "Courier New", monospace;
+            font-weight: bold;
+            font-size: 17.5px;
+        }
+
+        #controls p{
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #output {
+            width: 772.59px;
+            height: 105px;
+            margin: 0 0;
+            margin-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            padding-left: 5px;
+            padding-right: 0px;
+            padding-top: 10px;
+            display: block;
+            background-color: black;
+            color: white;
+            font-family: 'Lucida Console', Monaco, monospace;
+            outline: none;
+            overflow-y: hidden;
+            resize: none;
+        }
     </style>
 </head>
 <body>
+
     <div class="portfolio-container">
         <div class="project-title">Game Engine</div>
 
@@ -203,6 +249,60 @@
             </div>
         </div>
     </div>
+
+    <div class="portfolio-container">
+        <div class="project-title">Playground</div>
+
+        <div class="section">
+            <div class="section-title">Equipe</div>
+            <div class="team">
+                <p>Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Descrição</div>
+            <div class="description">
+                <p>
+                    Um conjunto de programas feitos por diversão. Todos eles foram escritos em C ou C++ 
+                    utilizando a biblioteca SDL2 para renderização gráfica e controle de eventos. Segue uma demonstração do jogo de
+                    xadrez presente nesse respositório. Ele utiliza um algoritmo de minimax simples para calcular os lances da 
+                    máquina e foi compilado em web assembler para poder funcionar em qualquer navegador.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Demonstração</div>
+                        
+            <div id="chess">
+                <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+                <span id="controls">
+                    <h3>Controles</h3>
+                    <p><strong>z</strong> Desfazer o último lance</p>
+                    <p><strong>i</strong> Desligar/Ligar IA</p>
+                    <p><strong>v</strong> Realizar Lance da IA</p>            
+                    <p><strong>x</strong> Mostrar histórico de lances</p>
+                    <p><strong>l</strong> Listar todos os lances possiveis</p>
+                    <p><strong>k</strong> Realizar lance aleatório</p>
+                    <p><strong>o</strong> Inverter exibicao do tabuleiro</p>
+                    <p><strong>w</strong> Trocar posicoes metade esquerda</p>
+                    <p><strong>a</strong> Trocar posicoes na vertical</p>
+                    <p><strong>d</strong> Trocar posicoes na vertical</p>
+                    <p><strong>s</strong> Trocar posicoes metade de cima</p>
+                    <p><strong>c</strong> Realizar lance do turno oposto</p>
+                </span>
+            </div>
+            <textarea id="output" rows="8"></textarea>          
+        </div>
+
+        <div class="section">
+            <div class="section-title">Link do Projeto</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/playground" target="_blank">Veja no GitHub</a>
+            </div>
+        </div>
+    </div>
     
     <div class="portfolio-container">
         <div class="project-title">Aplicativo para Controle de Gastos</div>
@@ -285,7 +385,7 @@
                 <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">Veja no GitHub</a>
             </div>
         </div>
-    </div>
+    </div>    
 
     <div class="portfolio-container">
         <div class="project-title">Lei de Zipf</div>
