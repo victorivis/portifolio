@@ -75,3 +75,12 @@
 #lang-switch:checked ~ .pt {
     cursor: pointer;
 }
+
+/* Trocar Conteudo */
+.hidden {
+    display: none !important;
+}
+
+label, .wrapper h2{
+    caret-color: transparent;
+}

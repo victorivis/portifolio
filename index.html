@@ -161,8 +161,10 @@
             resize: none;
         }
     </style>
+    <script src="language.js" defer></script>
     
     <link rel="stylesheet" href="language.css">
+
 </head>
 <body>
 
@@ -179,8 +181,9 @@
         </div>
     </div>
 
-    <div class="portfolio-container">
-        <div class="project-title">Game Engine</div>
+    <!-- Game Engine -->
+    <div class="portfolio-container pt-content">
+        <div class="project-title">Framework de Jogos</div>
 
         <div class="section">
             <div class="section-title">Equipe</div>
@@ -220,6 +223,47 @@
         </div>
     </div>
 
+    <div class="portfolio-container en-content">
+        <div class="project-title">Game Framework</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A simple game framework in C++ built with SDL2. The map is loaded using an XML file that stores positions in CSV format.
+                Collisions are handled using the AABB algorithm, and physics are implemented for gravity, friction, diagonal movement 
+                using sine and cosine, among other features currently in development. A compiled version is available for both 
+                Windows and Linux under the tags section.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/game-engine1.png" class="active">
+                <img src="img/game-engine2.png">
+                <img src="img/game-engine3.png">
+                <img src="img/game-engine4.png">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BikeShare Connect -->
     <div class="portfolio-container">
         <div class="project-title">BikeShare Connect</div>
         
