@@ -76,11 +76,10 @@
     cursor: pointer;
 }
 
-/* Trocar Conteudo */
 .hidden {
     display: none !important;
 }
 
-label, .wrapper h2{
+label, .wrapper h2, body{
     caret-color: transparent;
 }

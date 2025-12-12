@@ -264,7 +264,7 @@
     </div>
 
     <!-- BikeShare Connect -->
-    <div class="portfolio-container">
+    <div class="portfolio-container pt-content">
         <div class="project-title">BikeShare Connect</div>
         
         <div class="section">
@@ -309,17 +309,69 @@
         </div>
     </div>
 
+    <div class="portfolio-container en-content">
+        <div class="project-title">BikeShare Connect</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Daniel Lima, João Gabriel, Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A mobile web application for shared bike management, designed to transform urban transport into a more inclusive 
+                and sustainable solution. For the REST API, TypeScript was used with MongoDB as the database and Redis for 
+                query optimization via caching. On the frontend, SCSS was used to automate some visual resources. Geospatial 
+                information is also displayed in the browser through Mongo Atlas charts.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/bikeshare1.png">
+                <img src="img/bikeshare2.png" class="active">
+                <img src="img/bikeshare3.png">
+                <img src="img/bikeshare4.png">
+                <img src="img/bikeshare5.png">
+                <img src="img/bikeshare6.png">
+                <img src="img/bikeshare7.png">
+                <img src="img/bikeshare8.png">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/BikeShare-Connect.git" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Playground -->
     <div class="portfolio-container">
         <div class="project-title">Playground</div>
 
-        <div class="section">
+        <div class="section pt-content">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section en-content">
             <div class="section-title">Equipe</div>
             <div class="team">
                 <p>Victor Ivis</p>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section pt-content">
             <div class="section-title">Descrição</div>
             <div class="description">
                 <p>
@@ -331,12 +383,23 @@
             </div>
         </div>
 
+        <div class="section en-content">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A collection of programs made for fun. All of them were written in C or C++ using the SDL2 library for graphics rendering and event handling. 
+                Here's a demo of the chess game included in this repository. It uses a simple minimax algorithm to calculate AI moves and was compiled to WebAssembly 
+                to run on any browser.</p>
+            </div>
+        </div>
+
         <div class="section">
-            <div class="section-title">Demonstração</div>
+            <div class="section-title pt-content">Demonstração</div>
+            <div class="section-title en-content">Demonstração</div>
                         
             <div id="chess">
                 <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-                <span id="controls">
+
+                <span id="controls" class="pt-content">
                     <h3>Controles</h3>
                     <p><strong>z</strong> Desfazer o último lance</p>
                     <p><strong>i</strong> Desligar/Ligar IA</p>
@@ -351,19 +414,43 @@
                     <p><strong>s</strong> Trocar posicoes metade de cima</p>
                     <p><strong>c</strong> Realizar lance do turno oposto</p>
                 </span>
+
+                <span id="controls" class="en-content">
+                    <h3>Controls</h3>
+                    <p><strong>z</strong> Undo last move</p>
+                    <p><strong>i</strong> Toggle AI on/off</p>
+                    <p><strong>v</strong> Make AI move</p>
+                    <p><strong>x</strong> Show move history</p>
+                    <p><strong>l</strong> List all possible moves</p>
+                    <p><strong>k</strong> Make random move</p>
+                    <p><strong>o</strong> Flip board view</p>
+                    <p><strong>w</strong> Swap positions on the left half</p>
+                    <p><strong>a</strong> Swap vertical positions</p>
+                    <p><strong>d</strong> Swap vertical positions</p>
+                    <p><strong>s</strong> Swap positions on the upper half</p>
+                    <p><strong>c</strong> Make opponent’s move</p>
+                </span>
             </div>
             <textarea id="output" rows="8"></textarea>          
         </div>
 
-        <div class="section">
+        <div class="section pt-content">
             <div class="section-title">Link do Projeto</div>
             <div class="github-link">
                 <a href="https://github.com/victorivis/playground" target="_blank">Veja no GitHub</a>
             </div>
         </div>
+
+        <div class="section en-content">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/playground" target="_blank">View on GitHub</a>
+            </div>
+        </div>
     </div>
-    
-    <div class="portfolio-container">
+
+    <!-- Controle de Gastos -->    
+    <div class="portfolio-container pt-content">
         <div class="project-title">Aplicativo para Controle de Gastos</div>
 
         <div class="section">
@@ -402,7 +489,45 @@
         </div>
     </div>
 
-    <div class="portfolio-container">
+    <div class="portfolio-container en-content">
+        <div class="project-title">Expense Tracker App</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Cauã Pires, Daniel Lima, Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A simple app that allows users to save expenses and income and visualize their financial situation through charts.
+                I worked on the backend, handling data storage, which was kept simple by using local storage instead of a database.
+                I also implemented the charts using Chart.js and helped create the pop-ups with SweetAlert2.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/financas1.png" class="active">
+                <img src="img/financas2.png">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/Gerencia-de-configuracao-e-mudancas/projeto-final-grupogt/" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prometheus -->
+    <div class="portfolio-container pt-content">
         <div class="project-title">Prometheus</div>
 
         <div class="section">
@@ -444,9 +569,55 @@
                 <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">Veja no GitHub</a>
             </div>
         </div>
-    </div>    
+    </div>
 
-    <div class="portfolio-container">
+    <div class="portfolio-container en-content">
+        <div class="project-title">Prometheus</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A REST application for managing and promoting events. It allows moderators to view participants 
+                and generate certificates for users at the end of activities. 
+                I worked on developing CRUD operations in the API using the Spring Boot framework.
+                I also helped connect frontend endpoints in React and made adjustments to forms 
+                to send data to a PostgreSQL database.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/prometheus1.jpeg" class="active">
+                <img src="img/prometheus2.jpeg">
+                <img src="img/prometheus3.jpeg">
+                <img src="img/prometheus4.jpeg">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 class="pt-content">Outros</h1>
+    <h1 class="en-content">Others</h1>
+
+    <!-- Lei de Zipf -->
+    <div class="portfolio-container pt-content">
         <div class="project-title">Lei de Zipf</div>
 
         <div class="section">
@@ -487,6 +658,48 @@
             <div class="section-title">Link do Projeto</div>
             <div class="github-link">
                 <a href="https://github.com/victorivis/lei-de-zipf" target="_blank">Veja no GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-container">
+        <div class="project-title">Zipf's Law</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A presentation created with Jupyter Lab using Python's MatPlotLib library to display Zipf's law 
+                distribution in various books such as Alice in Wonderland, Crito, Dom Casmurro, and others. 
+                This law states that the second most frequent word appears half as often as the first, the third 
+                appears one third as often, and so on. This concept has many applications in statistics, such as 
+                plagiarism detection, natural language processing, and population behavior prediction.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/zipf1.png" alt="Distribution for Dom Casmurro" class="active">
+                <img src="img/zipf2.png" alt="Grouped distribution in pairs">
+                <img src="img/zipf3.png" alt="Distribution for Plato's Crito">
+                <img src="img/zipf4.png" alt="Distribution for Alice in Wonderland">
+                <img src="img/zipf5.png" alt="App image 4">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/lei-de-zipf" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
