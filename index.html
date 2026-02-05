@@ -119,8 +119,6 @@
             text-decoration: underline;
         }
 
-        /* estilizacao do xadrez */
-
         #chess{
             display: flex;
             flex-wrap: wrap;
@@ -160,10 +158,24 @@
             overflow-y: hidden;
             resize: none;
         }
+
+        .hidden{
+            display: none;
+        }
     </style>
     <script src="language.js" defer></script>
     
     <link rel="stylesheet" href="language.css">
+
+    <script src="trivolt/globals.js"></script>
+    <script src="trivolt/animation.js"></script>
+    <script src="trivolt/funny.js"></script>
+    <script src="trivolt/circles.js"></script>
+    <script src="trivolt/primitives.js"></script>
+    <script src="trivolt/effects.js"></script>
+    <script src="trivolt/game.js"></script>
+    <script src="trivolt/loader.js" defer></script>
+    <script src="trivolt/index.js" defer></script>
 
 </head>
 <body>
@@ -181,84 +193,212 @@
         </div>
     </div>
 
-    <!-- Game Engine -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">Framework de Jogos</div>
+    <!-- Trivolt -->
+    <div class="portfolio-container">
+        <div class="project-title">Trivolt</div>
 
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>Uma game engine simples em C++ feita com SDL2. O mapa é carregado usando um arquivo xml 
-                    que guarda as posições no formato csv. As colisões são lidadas pelo algorítmo AABB e 
-                    existe a implementação da física para gravidade, atrito, movimentação na diagonal usando
-                    seno e cosseno e outros funcionalidades que estão em desenvolvimento. Existe uma versão compilada
-                    tanto para windows quanto para linux na aba de tags.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/game-engine1.png" class="active">
-                <img src="img/game-engine2.png">
-                <img src="img/game-engine3.png">
-                <img src="img/game-engine4.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">Game Framework</div>
-
-        <div class="section">
+        <div class="section en-content">
             <div class="section-title">Team</div>
             <div class="team">
                 <p>Victor Ivis</p>
             </div>
         </div>
 
-        <div class="section">
+        <div class="section pt-content">
+            <div class="section-title">Equipe</div>
+            <div class="team">
+                <p>Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section pt-content">
+            <div class="section-title">Descrição</div>
+            <div class="description">
+                <p>
+                    Este projeto é uma engine 3D desenvolvida do zero para o navegador utilizando apenas JavaScript e a Canvas API nativa 
+                    do HTML. Além das formas geométricas primitivas desenvolvidas para a classe Polyedra é possível carregar objetos 
+                    customizados no formato obj acessando o projeto original. Abaixo segue uma demonstração dele sendo utilizado para 
+                    renderizar um pequeno jogo.
+                </p>
+            </div>
+        </div>
+
+        <div class="section en-content">
             <div class="section-title">Description</div>
             <div class="description">
-                <p>A simple game framework in C++ built with SDL2. The map is loaded using an XML file that stores positions in CSV format.
-                Collisions are handled using the AABB algorithm, and physics are implemented for gravity, friction, diagonal movement 
-                using sine and cosine, among other features currently in development. A compiled version is available for both 
-                Windows and Linux under the tags section.</p>
+                <p>
+                    This project is a 3D engine developed from scratch for the browser using only JavaScript 
+                    and the native HTML Canvas API. In addition to the primitive geometric shapes developed 
+                    for the Polyedra class, it is also possible to load custom objects in the .obj format by 
+                    accessing the original project. Below is a demonstration of the engine being used to render 
+                    a mini-game.
+
+                </p>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/game-engine1.png" class="active">
-                <img src="img/game-engine2.png">
-                <img src="img/game-engine3.png">
-                <img src="img/game-engine4.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            <div class="section-title pt-content">Demonstração</div>
+            <div class="section-title en-content">Demo</div>
+                        
+            <div id="trivolt-section">
+                <!-- Inicio Trivolt -->
+
+                <div class="container">
+                    <canvas id="game"></canvas>
+
+                    <div class="hidden">
+                        <div class="ui-group">
+                        <label for="circles" class="control-label">Círculos:</label>
+                        <input type="checkbox" id="circles" />
+                        </div>
+
+                        <div class="ui-group">
+                        <label for="gradients" class="control-label">Gradientes:</label>
+                        <input type="checkbox" id="gradients" />
+                        </div>
+
+                        <div class="ui-group">
+                        <label for="showOrbs" class="control-label">Orbes:</label>
+                        <input type="checkbox" id="showOrbs" />
+                        </div>
+
+                        <div class="ui-group" id="rounding-group">
+                        <label for="rounding" class="control-label hidden">Arredondamento:</label>
+                        <input class="hidden" type="range" id="rounding" min="0" max="2000" step="0.5" value="2" />
+                        <span class="hidden" id="rounding_value">2</span>
+                        </div>
+
+                        <div class="ui-group">
+                        <label class="control-label rotation-label">Rotação: </label>
+
+                        <div class="ui-controls">
+                            <div class="ui-group">
+                            <label for="rotation-x" class="control-label rotation-label">X</label>
+                            <input type="checkbox" id="rotation-x" class="ui-checkbox">
+                            </div>
+
+                            <div class="ui-group">
+                            <label for="rotation-y" class="control-label rotation-label">Y</label>
+                            <input type="checkbox" id="rotation-y" class="ui-checkbox">
+                            </div class="ui-group">
+
+                            <div class="ui-group">
+                            <label for="rotation-z" class="control-label rotation-label">Z</label>
+                            <input type="checkbox" id="rotation-z" class="ui-checkbox">
+                            </div>
+                        </div>
+
+                        <div class="ui-controls">        
+                            <div class="ui-group">
+                            <label class="control-label rotation-label">V <!--elocidade Cumulativa: --> </label>
+                            <input type="checkbox" id="cumulative_speed" class="ui-checkbox">
+                            </div>
+                        </div>
+                        </div> 
+                    </div>
+
+                    <div id="infos" class="hidden">
+                        <label class="section-title bold">Infos</label>
+                        
+                        <div class="flex-columns">
+
+                        <!-- Posições -->
+                        <div class="ui-column">
+                            <label class="section-label">Posições:</label>
+
+                            <div class="ui-group">
+                            <label>X</label>
+                            <input type="number" id="pos-x" class="ui-param" step="0.1" value="0">
+                            <input type="range" id="pos-x-slider" min="-10" max="10" step="0.1" value="0">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Y</label>
+                            <input type="number" id="pos-y" class="ui-param" step="0.1" value="0">
+                            <input type="range" id="pos-y-slider" min="-10" max="10" step="0.1" value="0">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Z</label>
+                            <input type="number" id="pos-z" class="ui-param" step="0.1" value="6">
+                            <input type="range" id="pos-z-slider" min="-10" max="20" step="0.1" value="6">
+                            </div>
+                        </div>
+
+                        <!-- Ângulos -->
+                        <div class="ui-column">
+                            <label class="section-label">Ângulos (graus):</label>
+
+                            <div class="ui-group">
+                            <label>X</label>
+                            <input type="number" id="angle-x" class="ui-param" value="0" step="1">
+                            <input type="range" id="angle-x-slider" min="0" max="360" step="0.1" value="0">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Y</label>
+                            <input type="number" id="angle-y" class="ui-param" value="0" step="1">
+                            <input type="range" id="angle-y-slider" min="0" max="360" step="0.1" value="0">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Z</label>
+                            <input type="number" id="angle-z" class="ui-param" value="0" step="1">
+                            <input type="range" id="angle-z-slider" min="0" max="360" step="0.1" value="0">
+                            </div>
+
+                        </div>
+
+                        <!-- Propriedades -->
+                        <div class="ui-column">
+                            <label class="section-label">Propriedades:</label>
+
+                            <div class="ui-group">
+                            <label>Tipos</label>
+                            <input type="checkbox" id="obstacleTypes">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Speed (m/fps)</label>
+                            <input type="number" id="enemySpeedInput" class="ui-param" step="0.5">
+                            <input type="range" id="enemySpeedSlider" min="0" max="60" step="0.5">
+                            </div>
+
+                            <div class="ui-group">
+                            <label>Spawn Rate (%)</label>
+                            <input type="number" id="spawnRateInput" class="ui-param" step="0.5">
+                            <input type="range" id="spawnRateSlider" min="0" max="100" step="0.5">
+                            </div>
+                        </div>
+
+                        </div>
+
+                        
+                    </div>
+
+                    <div id="files" class="hidden">
+                        <input type="file" id="file-input">
+                        <div id="file-info"></div>
+                        <pre id="file-content"></pre>
+                    </div>
+                </div>
+
+                <!-- Fim trivolt -->
             </div>
         </div>
 
-        <div class="section">
+        <div class="section pt-content">
+            <div class="section-title">Link do Projeto</div>
+            <div class="github-link">
+                <a href="https://github.com/victorivis/trivolt" target="_blank">Veja no GitHub</a>
+            </div>
+        </div>
+
+        <div class="section en-content">
             <div class="section-title">Project Link</div>
             <div class="github-link">
-                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">View on GitHub</a>
+                <a href="https://github.com/victorivis/trivolt" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
@@ -353,18 +493,104 @@
         </div>
     </div>
 
+    <!-- Prometheus -->
+    <div class="portfolio-container pt-content">
+        <div class="project-title">Prometheus</div>
+
+        <div class="section">
+            <div class="section-title">Equipe</div>
+            <div class="team">
+                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Descrição</div>
+            <div class="description">
+                <p>
+                    Uma aplicação REST para gerenciamento e divulgação de eventos. Permite que os moderadores vejam 
+                    os inscritos e gerem certifados ao fim das atividades para os usuários que participaram. 
+
+                    Atuei na parte de desenvolvimento das funções de CRUD na API utilizando o framework Spring Boot.
+                    Também ajudei a conectar os endpoints no front-end em React e fiz alguns ajustes nos formulários
+                    para envio das informações ao banco de dados PostgreSQL. 
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Imagens do Aplicativo</div>
+            <div class="images">
+                <img src="img/prometheus1.jpeg" class="active">
+                <img src="img/prometheus2.jpeg">
+                <img src="img/prometheus3.jpeg">
+                <img src="img/prometheus4.jpeg">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Link do Projeto</div>
+            <div class="github-link">
+                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">Veja no GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="portfolio-container en-content">
+        <div class="project-title">Prometheus</div>
+
+        <div class="section">
+            <div class="section-title">Team</div>
+            <div class="team">
+                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Description</div>
+            <div class="description">
+                <p>A REST application for managing and promoting events. It allows moderators to view participants 
+                and generate certificates for users at the end of activities. 
+                I worked on developing CRUD operations in the API using the Spring Boot framework.
+                I also helped connect frontend endpoints in React and made adjustments to forms 
+                to send data to a PostgreSQL database.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">App Images</div>
+            <div class="images">
+                <img src="img/prometheus1.jpeg" class="active">
+                <img src="img/prometheus2.jpeg">
+                <img src="img/prometheus3.jpeg">
+                <img src="img/prometheus4.jpeg">
+                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
+                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Project Link</div>
+            <div class="github-link">
+                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Playground -->
     <div class="portfolio-container">
         <div class="project-title">Playground</div>
 
-        <div class="section pt-content">
+        <div class="section en-content">
             <div class="section-title">Team</div>
             <div class="team">
                 <p>Victor Ivis</p>
             </div>
         </div>
 
-        <div class="section en-content">
+        <div class="section pt-content">
             <div class="section-title">Equipe</div>
             <div class="team">
                 <p>Victor Ivis</p>
@@ -394,7 +620,7 @@
 
         <div class="section">
             <div class="section-title pt-content">Demonstração</div>
-            <div class="section-title en-content">Demonstração</div>
+            <div class="section-title en-content">Demo</div>
                         
             <div id="chess">
                 <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
@@ -526,38 +752,35 @@
         </div>
     </div>
 
-    <!-- Prometheus -->
+    <!-- Game Engine -->
     <div class="portfolio-container pt-content">
-        <div class="project-title">Prometheus</div>
+        <div class="project-title">Framework de Jogos</div>
 
         <div class="section">
             <div class="section-title">Equipe</div>
             <div class="team">
-                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
+                <p>Victor Ivis</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Descrição</div>
             <div class="description">
-                <p>
-                    Uma aplicação REST para gerenciamento e divulgação de eventos. Permite que os moderadores vejam 
-                    os inscritos e gerem certifados ao fim das atividades para os usuários que participaram. 
-
-                    Atuei na parte de desenvolvimento das funções de CRUD na API utilizando o framework Spring Boot.
-                    Também ajudei a conectar os endpoints no front-end em React e fiz alguns ajustes nos formulários
-                    para envio das informações ao banco de dados PostgreSQL. 
-                </p>
+                <p>Uma game engine simples em C++ feita com SDL2. O mapa é carregado usando um arquivo xml 
+                    que guarda as posições no formato csv. As colisões são lidadas pelo algorítmo AABB e 
+                    existe a implementação da física para gravidade, atrito, movimentação na diagonal usando
+                    seno e cosseno e outros funcionalidades que estão em desenvolvimento. Existe uma versão compilada
+                    tanto para windows quanto para linux na aba de tags.</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Imagens do Aplicativo</div>
             <div class="images">
-                <img src="img/prometheus1.jpeg" class="active">
-                <img src="img/prometheus2.jpeg">
-                <img src="img/prometheus3.jpeg">
-                <img src="img/prometheus4.jpeg">
+                <img src="img/game-engine1.png" class="active">
+                <img src="img/game-engine2.png">
+                <img src="img/game-engine3.png">
+                <img src="img/game-engine4.png">
                 <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
                 <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
             </div>
@@ -566,39 +789,38 @@
         <div class="section">
             <div class="section-title">Link do Projeto</div>
             <div class="github-link">
-                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">Veja no GitHub</a>
+                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">Veja no GitHub</a>
             </div>
         </div>
     </div>
 
     <div class="portfolio-container en-content">
-        <div class="project-title">Prometheus</div>
+        <div class="project-title">Game Framework</div>
 
         <div class="section">
             <div class="section-title">Team</div>
             <div class="team">
-                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
+                <p>Victor Ivis</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">Description</div>
             <div class="description">
-                <p>A REST application for managing and promoting events. It allows moderators to view participants 
-                and generate certificates for users at the end of activities. 
-                I worked on developing CRUD operations in the API using the Spring Boot framework.
-                I also helped connect frontend endpoints in React and made adjustments to forms 
-                to send data to a PostgreSQL database.</p>
+                <p>A simple game framework in C++ built with SDL2. The map is loaded using an XML file that stores positions in CSV format.
+                Collisions are handled using the AABB algorithm, and physics are implemented for gravity, friction, diagonal movement 
+                using sine and cosine, among other features currently in development. A compiled version is available for both 
+                Windows and Linux under the tags section.</p>
             </div>
         </div>
 
         <div class="section">
             <div class="section-title">App Images</div>
             <div class="images">
-                <img src="img/prometheus1.jpeg" class="active">
-                <img src="img/prometheus2.jpeg">
-                <img src="img/prometheus3.jpeg">
-                <img src="img/prometheus4.jpeg">
+                <img src="img/game-engine1.png" class="active">
+                <img src="img/game-engine2.png">
+                <img src="img/game-engine3.png">
+                <img src="img/game-engine4.png">
                 <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
                 <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
             </div>
@@ -607,11 +829,10 @@
         <div class="section">
             <div class="section-title">Project Link</div>
             <div class="github-link">
-                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">View on GitHub</a>
+                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">View on GitHub</a>
             </div>
         </div>
     </div>
-
 
     <h1 class="pt-content">Outros</h1>
     <h1 class="en-content">Others</h1>
@@ -662,7 +883,7 @@
         </div>
     </div>
 
-    <div class="portfolio-container">
+    <div class="portfolio-container en-content">
         <div class="project-title">Zipf's Law</div>
 
         <div class="section">
