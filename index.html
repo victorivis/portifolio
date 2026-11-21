@@ -4,167 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Projetos</title>
+    <script src="i18n.js" defer></script>
+    <script src="projects.js" defer></script>
+    <script src="render.js" defer></script>
     <script src="changeImage.js" defer></script>
     <script src="zoomImage.js" defer></script>
     <script src="chessController.js" defer></script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f9f9f9;
-            margin: 0;
-            flex-wrap: wrap;
-        }
-
-        .portfolio-container {
-            border-radius: 20px;
-            width: 80%;
-            max-width: 800px;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .description, .team, .images, .github-link {
-            font-size: 16px;
-            color: #444;
-        }
-
-        .images {
-            position: relative;
-            max-width: 100%;
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .images::after {            
-            margin-top: 10px;
-            display: var(--visibility, none);
-            content: "";
-            background-image: var(--url);
-            background-size: 320%;
-            background-position: var(--posX, 0) var(--posY, 0);
-            width:  100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .images img {
-            display: none;
-            max-width: 100%;
-            height: auto;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .images img.active {
-            display: block;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 10;
-        }
-
-        .arrow-left {
-            left: 10px;
-        }
-
-        .arrow-right {
-            right: 10px;
-        }
-
-        .github-link a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        .github-link a:hover {
-            text-decoration: underline;
-        }
-
-        #chess{
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        #controls{
-            padding: 10px;
-            border: 1px black solid;
-        }
-        
-        strong{
-            font-family: Consolas, "Courier New", monospace;
-            font-weight: bold;
-            font-size: 17.5px;
-        }
-
-        #controls p{
-            margin: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        #output {
-            width: 772.59px;
-            height: 105px;
-            margin: 0 0;
-            margin-top: 0px;
-            border-left: 0px;
-            border-right: 0px;
-            padding-left: 5px;
-            padding-right: 0px;
-            padding-top: 10px;
-            display: block;
-            background-color: black;
-            color: white;
-            font-family: 'Lucida Console', Monaco, monospace;
-            outline: none;
-            overflow-y: hidden;
-            resize: none;
-        }
-
-        .hidden{
-            display: none;
-        }
-    </style>
     <script src="language.js" defer></script>
-    
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="language.css">
 
   <script src="https://cdn.jsdelivr.net/gh/victorivis/trivolt/globals.js"></script>
@@ -192,808 +39,124 @@
         </div>
     </div>
 
-    <!-- Trivolt -->
-    <div class="portfolio-container">
-        <div class="project-title">Trivolt</div>
+    <main id="portfolio"></main>
 
-        <div class="section en-content">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>
-                    Este projeto é uma engine 3D desenvolvida do zero para o navegador utilizando apenas JavaScript e a Canvas API nativa 
-                    do HTML. Além das formas geométricas primitivas desenvolvidas para a classe Polyedra é possível carregar objetos 
-                    customizados no formato obj acessando o projeto original. Abaixo segue uma demonstração dele sendo utilizado para 
-                    renderizar um pequeno jogo.
-                </p>
-            </div>
-        </div>
-
-        <div class="section en-content">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>
-                    This project is a 3D engine developed from scratch for the browser using only JavaScript 
-                    and the native HTML Canvas API. In addition to the primitive geometric shapes developed 
-                    for the Polyedra class, it is also possible to load custom objects in the .obj format by 
-                    accessing the original project. Below is a demonstration of the engine being used to render 
-                    a mini-game.
-
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title pt-content">Demonstração</div>
-            <div class="section-title en-content">Demo</div>
-                        
+    <div id="demos" hidden>
             <div id="trivolt-section">
-                <!-- Inicio Trivolt -->
-
                 <div class="container">
                     <canvas id="game"></canvas>
-
                     <div class="hidden">
                         <div class="ui-group">
                         <label for="circles" class="control-label">Círculos:</label>
                         <input type="checkbox" id="circles" />
                         </div>
-
                         <div class="ui-group">
                         <label for="gradients" class="control-label">Gradientes:</label>
                         <input type="checkbox" id="gradients" />
                         </div>
-
                         <div class="ui-group">
                         <label for="showOrbs" class="control-label">Orbes:</label>
                         <input type="checkbox" id="showOrbs" />
                         </div>
-
                         <div class="ui-group" id="rounding-group">
                         <label for="rounding" class="control-label hidden">Arredondamento:</label>
                         <input class="hidden" type="range" id="rounding" min="0" max="2000" step="0.5" value="2" />
                         <span class="hidden" id="rounding_value">2</span>
                         </div>
-
                         <div class="ui-group">
                         <label class="control-label rotation-label">Rotação: </label>
-
                         <div class="ui-controls">
                             <div class="ui-group">
                             <label for="rotation-x" class="control-label rotation-label">X</label>
                             <input type="checkbox" id="rotation-x" class="ui-checkbox">
                             </div>
-
                             <div class="ui-group">
                             <label for="rotation-y" class="control-label rotation-label">Y</label>
                             <input type="checkbox" id="rotation-y" class="ui-checkbox">
                             </div class="ui-group">
-
                             <div class="ui-group">
                             <label for="rotation-z" class="control-label rotation-label">Z</label>
                             <input type="checkbox" id="rotation-z" class="ui-checkbox">
                             </div>
                         </div>
-
                         <div class="ui-controls">        
                             <div class="ui-group">
-                            <label class="control-label rotation-label">V <!--elocidade Cumulativa: --> </label>
+                            <label class="control-label rotation-label">V  </label>
                             <input type="checkbox" id="cumulative_speed" class="ui-checkbox">
                             </div>
                         </div>
                         </div> 
                     </div>
-
                     <div id="infos" class="hidden">
                         <label class="section-title bold">Infos</label>
-                        
                         <div class="flex-columns">
-
-                        <!-- Posições -->
                         <div class="ui-column">
                             <label class="section-label">Posições:</label>
-
                             <div class="ui-group">
                             <label>X</label>
                             <input type="number" id="pos-x" class="ui-param" step="0.1" value="0">
                             <input type="range" id="pos-x-slider" min="-10" max="10" step="0.1" value="0">
                             </div>
-
                             <div class="ui-group">
                             <label>Y</label>
                             <input type="number" id="pos-y" class="ui-param" step="0.1" value="0">
                             <input type="range" id="pos-y-slider" min="-10" max="10" step="0.1" value="0">
                             </div>
-
                             <div class="ui-group">
                             <label>Z</label>
                             <input type="number" id="pos-z" class="ui-param" step="0.1" value="6">
                             <input type="range" id="pos-z-slider" min="-10" max="20" step="0.1" value="6">
                             </div>
                         </div>
-
-                        <!-- Ângulos -->
                         <div class="ui-column">
                             <label class="section-label">Ângulos (graus):</label>
-
                             <div class="ui-group">
                             <label>X</label>
                             <input type="number" id="angle-x" class="ui-param" value="0" step="1">
                             <input type="range" id="angle-x-slider" min="0" max="360" step="0.1" value="0">
                             </div>
-
                             <div class="ui-group">
                             <label>Y</label>
                             <input type="number" id="angle-y" class="ui-param" value="0" step="1">
                             <input type="range" id="angle-y-slider" min="0" max="360" step="0.1" value="0">
                             </div>
-
                             <div class="ui-group">
                             <label>Z</label>
                             <input type="number" id="angle-z" class="ui-param" value="0" step="1">
                             <input type="range" id="angle-z-slider" min="0" max="360" step="0.1" value="0">
                             </div>
-
                         </div>
-
-                        <!-- Propriedades -->
                         <div class="ui-column">
                             <label class="section-label">Propriedades:</label>
-
                             <div class="ui-group">
                             <label>Tipos</label>
                             <input type="checkbox" id="obstacleTypes">
                             </div>
-
                             <div class="ui-group">
                             <label>Speed (m/fps)</label>
                             <input type="number" id="enemySpeedInput" class="ui-param" step="0.5">
                             <input type="range" id="enemySpeedSlider" min="0" max="60" step="0.5">
                             </div>
-
                             <div class="ui-group">
                             <label>Spawn Rate (%)</label>
                             <input type="number" id="spawnRateInput" class="ui-param" step="0.2">
                             <input type="range" id="spawnRateSlider" min="0" max="100" step="0.2">
                             </div>
                         </div>
-
                         </div>
-
-                        
                     </div>
-
                     <div id="files" class="hidden">
                         <input type="file" id="file-input">
                         <div id="file-info"></div>
                         <pre id="file-content"></pre>
                     </div>
                 </div>
-
-                <!-- Fim trivolt -->
             </div>
+
+        <div id="chess">
+            <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
         </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/trivolt" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-
-        <div class="section en-content">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/trivolt" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- MedLink -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">MedLink</div>
-        
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Alexandre Gonçalvez, Rafael Vazquez, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>
-                    Plataforma web de telemedicina com Angular e Spring Boot, 
-                    incluindo triagem, agendamento de consultas e processamento de dados via IA, além de 
-                    videochamadas integradas ao ZegoCloud, escolhido pela sua modularidade e melhor 
-                    custo-benefício..</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/medlink/medlink1.png" class="active">
-                <img src="img/medlink/medlink2.png">
-                <img src="img/medlink/medlink3.png">
-                <img src="img/medlink/medlink4.png">
-                <img src="img/medlink/medlink5.png">
-                <img src="img/medlink/medlink6.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">MedLink</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Alexandre Gonçalvez, Rafael Vazquez, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>
-                    Telemedicine web platform with Angular and Spring Boot, featuring triage, 
-                    appointment scheduling, and AI-powered data processing, as well as video calls 
-                    integrated with ZegoCloud, selected for its modularity and cost-effectiveness.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/medlink/medlink1.png" class="active">
-                <img src="img/medlink/medlink2.png">
-                <img src="img/medlink/medlink3.png">
-                <img src="img/medlink/medlink4.png">
-                <img src="img/medlink/medlink5.png">
-                <img src="img/medlink/medlink6.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- BikeShare Connect -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">BikeShare Connect</div>
-        
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Daniel Lima, João Gabriel, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>Uma aplicação web mobile para controle de bicicletas coletivas, idealizado para transformar o transporte 
-                    urbano em uma solução mais inclusiva e sustentável. Para a API REST, foi utilizado TypeScript com 
-                    o MongoDB como banco de dados e o Redis para otimização das consultas com um cache. 
-                    No frontend, utilizou-se SCSS para automatização de alguns recursos gráficos. Também é possível visualizar 
-                    as informações geoespaciais no navegador por charts do Mongo Atlas.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/bikeshare1.png">
-                <img src="img/bikeshare2.png" class="active">
-                <img src="img/bikeshare3.png">
-                <img src="img/bikeshare4.png">
-                <img src="img/bikeshare5.png">
-                <img src="img/bikeshare6.png">
-                <img src="img/bikeshare7.png">
-                <img src="img/bikeshare8.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/BikeShare-Connect.git" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">BikeShare Connect</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Daniel Lima, João Gabriel, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A mobile web application for shared bike management, designed to transform urban transport into a more inclusive 
-                and sustainable solution. For the REST API, TypeScript was used with MongoDB as the database and Redis for 
-                query optimization via caching. On the frontend, SCSS was used to automate some visual resources. Geospatial 
-                information is also displayed in the browser through Mongo Atlas charts.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/bikeshare1.png">
-                <img src="img/bikeshare2.png" class="active">
-                <img src="img/bikeshare3.png">
-                <img src="img/bikeshare4.png">
-                <img src="img/bikeshare5.png">
-                <img src="img/bikeshare6.png">
-                <img src="img/bikeshare7.png">
-                <img src="img/bikeshare8.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/BikeShare-Connect.git" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Prometheus -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">Prometheus</div>
-
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>
-                    Uma aplicação REST para gerenciamento e divulgação de eventos. Permite que os moderadores vejam 
-                    os inscritos e gerem certifados ao fim das atividades para os usuários que participaram. 
-
-                    Atuei na parte de desenvolvimento das funções de CRUD na API utilizando o framework Spring Boot.
-                    Também ajudei a conectar os endpoints no front-end em React e fiz alguns ajustes nos formulários
-                    para envio das informações ao banco de dados PostgreSQL. 
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/prometheus1.jpeg" class="active">
-                <img src="img/prometheus2.jpeg">
-                <img src="img/prometheus3.jpeg">
-                <img src="img/prometheus4.jpeg">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">Prometheus</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Luiz Fernando, José Anderson, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A REST application for managing and promoting events. It allows moderators to view participants 
-                and generate certificates for users at the end of activities. 
-                I worked on developing CRUD operations in the API using the Spring Boot framework.
-                I also helped connect frontend endpoints in React and made adjustments to forms 
-                to send data to a PostgreSQL database.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/prometheus1.jpeg" class="active">
-                <img src="img/prometheus2.jpeg">
-                <img src="img/prometheus3.jpeg">
-                <img src="img/prometheus4.jpeg">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/POO-ADS-IFPB-CZ/projeto-final-prometheus" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Playground -->
-    <div class="portfolio-container">
-        <div class="project-title">Playground</div>
-
-        <div class="section en-content">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>
-                    Um conjunto de programas feitos por diversão. Todos eles foram escritos em C ou C++ 
-                    utilizando a biblioteca SDL2 para renderização gráfica e controle de eventos. Segue uma demonstração do jogo de
-                    xadrez presente nesse respositório. Ele utiliza um algoritmo de minimax simples para calcular os lances da 
-                    máquina e foi compilado em web assembler para poder funcionar em qualquer navegador.
-                </p>
-            </div>
-        </div>
-
-        <div class="section en-content">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A collection of programs made for fun. All of them were written in C or C++ using the SDL2 library for graphics rendering and event handling. 
-                Here's a demo of the chess game included in this repository. It uses a simple minimax algorithm to calculate AI moves and was compiled to WebAssembly 
-                to run on any browser.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title pt-content">Demonstração</div>
-            <div class="section-title en-content">Demo</div>
-                        
-            <div id="chess">
-                <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-
-                <span id="controls" class="pt-content">
-                    <h3>Controles</h3>
-                    <p><strong>z</strong> Desfazer o último lance</p>
-                    <p><strong>i</strong> Desligar/Ligar IA</p>
-                    <p><strong>v</strong> Realizar Lance da IA</p>            
-                    <p><strong>x</strong> Mostrar histórico de lances</p>
-                    <p><strong>l</strong> Listar todos os lances possiveis</p>
-                    <p><strong>k</strong> Realizar lance aleatório</p>
-                    <p><strong>o</strong> Inverter exibicao do tabuleiro</p>
-                    <p><strong>w</strong> Trocar posicoes metade esquerda</p>
-                    <p><strong>a</strong> Trocar posicoes na vertical</p>
-                    <p><strong>d</strong> Trocar posicoes na vertical</p>
-                    <p><strong>s</strong> Trocar posicoes metade de cima</p>
-                    <p><strong>c</strong> Realizar lance do turno oposto</p>
-                </span>
-
-                <span id="controls" class="en-content">
-                    <h3>Controls</h3>
-                    <p><strong>z</strong> Undo last move</p>
-                    <p><strong>i</strong> Toggle AI on/off</p>
-                    <p><strong>v</strong> Make AI move</p>
-                    <p><strong>x</strong> Show move history</p>
-                    <p><strong>l</strong> List all possible moves</p>
-                    <p><strong>k</strong> Make random move</p>
-                    <p><strong>o</strong> Flip board view</p>
-                    <p><strong>w</strong> Swap positions on the left half</p>
-                    <p><strong>a</strong> Swap vertical positions</p>
-                    <p><strong>d</strong> Swap vertical positions</p>
-                    <p><strong>s</strong> Swap positions on the upper half</p>
-                    <p><strong>c</strong> Make opponent’s move</p>
-                </span>
-            </div>
-            <textarea id="output" rows="8"></textarea>          
-        </div>
-
-        <div class="section pt-content">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/playground" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-
-        <div class="section en-content">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/playground" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Controle de Gastos -->    
-    <div class="portfolio-container pt-content">
-        <div class="project-title">Aplicativo para Controle de Gastos</div>
-
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Cauã Pires, Daniel Lima, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>Um aplicativo bem simples que permite guardar despesas e lucros para visualizar graficamente a situação financeira do usuário.
-                    Atuei no backend fazendo a parte de armazenamento dos dados, que é bastante simples porque não utilizou qualquer banco
-                    de dados, mas apenas o próprio local storage. Também fiz toda a parte de geração dos gráficos usando a biblioteca Chart.js e
-                    ainda auxiliei nos pop-ups que foram feitos com a biblioteca SweetAlert2.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/financas1.png" class="active">
-                <img src="img/financas2.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/Gerencia-de-configuracao-e-mudancas/projeto-final-grupogt/" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">Expense Tracker App</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Cauã Pires, Daniel Lima, Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A simple app that allows users to save expenses and income and visualize their financial situation through charts.
-                I worked on the backend, handling data storage, which was kept simple by using local storage instead of a database.
-                I also implemented the charts using Chart.js and helped create the pop-ups with SweetAlert2.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/financas1.png" class="active">
-                <img src="img/financas2.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/Gerencia-de-configuracao-e-mudancas/projeto-final-grupogt/" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Game Engine -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">Framework de Jogos</div>
-
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>Uma game engine simples em C++ feita com SDL2. O mapa é carregado usando um arquivo xml 
-                    que guarda as posições no formato csv. As colisões são lidadas pelo algorítmo AABB e 
-                    existe a implementação da física para gravidade, atrito, movimentação na diagonal usando
-                    seno e cosseno e outros funcionalidades que estão em desenvolvimento. Existe uma versão compilada
-                    tanto para windows quanto para linux na aba de tags.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/game-engine1.png" class="active">
-                <img src="img/game-engine2.png">
-                <img src="img/game-engine3.png">
-                <img src="img/game-engine4.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">Game Framework</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A simple game framework in C++ built with SDL2. The map is loaded using an XML file that stores positions in CSV format.
-                Collisions are handled using the AABB algorithm, and physics are implemented for gravity, friction, diagonal movement 
-                using sine and cosine, among other features currently in development. A compiled version is available for both 
-                Windows and Linux under the tags section.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/game-engine1.png" class="active">
-                <img src="img/game-engine2.png">
-                <img src="img/game-engine3.png">
-                <img src="img/game-engine4.png">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/modelo-jogos" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <h1 class="pt-content">Outros</h1>
-    <h1 class="en-content">Others</h1>
-
-    <!-- Lei de Zipf -->
-    <div class="portfolio-container pt-content">
-        <div class="project-title">Lei de Zipf</div>
-
-        <div class="section">
-            <div class="section-title">Equipe</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Descrição</div>
-            <div class="description">
-                <p>
-                    Uma apresentação feita com o Jupyter Lab utilizando a biblioteca MatPlotLib do python para 
-                    os gráficos da distribuição da lei de zipf em diversos livros como Alice no País das Maravilhas, 
-                     Críton, Dom Casmurro e outros. Essa lei diz que a 2ª palavra mais frequente aparece metade das vezes
-                     que a primeira, a 3ª aparece um terço da primeira e assim por diante. Esse conceito tem 
-                     diversas aplicações na área da estatística como detecção de plágios, processamento de linguagem natural e
-                     até previsão do comportamento de populações.
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Imagens do Aplicativo</div>
-            <div class="images">
-                <img src="img/zipf1.png" alt="Distribuicao para Dom Casmurro" class="active">
-                <img src="img/zipf2.png" alt="Distribuicao agrupada em pares">
-                <img src="img/zipf3.png" alt="Distribuicao para Criton de Platao">
-                <img src="img/zipf4.png" alt="Distribuicao para Alice no Pais das Maravilhas">
-                <img src="img/zipf5.png" alt="Imagem do aplicativo 4">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Link do Projeto</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/lei-de-zipf" target="_blank">Veja no GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="portfolio-container en-content">
-        <div class="project-title">Zipf's Law</div>
-
-        <div class="section">
-            <div class="section-title">Team</div>
-            <div class="team">
-                <p>Victor Ivis</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Description</div>
-            <div class="description">
-                <p>A presentation created with Jupyter Lab using Python's MatPlotLib library to display Zipf's law 
-                distribution in various books such as Alice in Wonderland, Crito, Dom Casmurro, and others. 
-                This law states that the second most frequent word appears half as often as the first, the third 
-                appears one third as often, and so on. This concept has many applications in statistics, such as 
-                plagiarism detection, natural language processing, and population behavior prediction.</p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">App Images</div>
-            <div class="images">
-                <img src="img/zipf1.png" alt="Distribution for Dom Casmurro" class="active">
-                <img src="img/zipf2.png" alt="Grouped distribution in pairs">
-                <img src="img/zipf3.png" alt="Distribution for Plato's Crito">
-                <img src="img/zipf4.png" alt="Distribution for Alice in Wonderland">
-                <img src="img/zipf5.png" alt="App image 4">
-                <button class="arrow arrow-left" onclick="changeImage(-1, event)">&#10094;</button>
-                <button class="arrow arrow-right" onclick="changeImage(1, event)">&#10095;</button>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Project Link</div>
-            <div class="github-link">
-                <a href="https://github.com/victorivis/lei-de-zipf" target="_blank">View on GitHub</a>
-            </div>
-        </div>
+        <textarea id="output" rows="8"></textarea>
     </div>
 </body>
 </html>

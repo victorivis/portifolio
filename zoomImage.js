@@ -37,7 +37,6 @@ for(let i=0; i<lenImg; i++){
     currentPortifolio.addEventListener("mouseover", (event)=>{
         const currentClass = event.target.getAttribute("class");
 
-        //Do not zoom if over a an arrow
         if(zoomedArray[i] && currentClass.includes("arrow")==false){
             currentPortifolio.style.setProperty("--visibility", "block");
             currentPortifolio.style.setProperty("cursor", "zoom-out");
